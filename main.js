@@ -51,8 +51,8 @@ $("#frmUsuarios").submit(function (event) {
     $.post("servicio.php?agregarUsuario", $(this).serialize(), function (respuesta) {
         if (respuesta != "0") {
             alert("Usuario agregado correctamente")
-            $("#frmUsuario").get(0).reset()
-            buscarUsuario()
+            $("#frmUsuarios").get(0).reset()
+            buscarUsuarios()
         }
     })
 })

@@ -11,6 +11,7 @@ function buscarUsuarios() {
                 <td>${usuario.email}</td>
                 <td>${usuario.password}</td>
                 <td>${usuario.fecha_registro}</td>
+                <td>${usuario.total_consultas}</td>
                 <td>
                     <button class="btn btn-info btn-editar mb-1 me-1" data-id="${usuario.id_usuario}">Editar</button>
                     <button class="btn btn-danger btn-eliminar" data-id="${usuario.id_usuario}">Eliminar</button>

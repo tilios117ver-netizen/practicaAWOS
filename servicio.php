@@ -58,7 +58,22 @@ if (isset($_GET["iniciarSesion"])) {
   }
 }
 elseif (isset($_GET["usuarios"])) {
-  $select = $con->select("usuarios", "id_usuario, nombre, email, password, fecha_registro");
+  $select = $con->select("usuarios AS u", "
+  id_usuario,
+  nombre,
+  email,
+  REGEXP_REPLACE(password,'.','*') AS password,
+  fecha_registro,
+  (
+    SELECT
+          COUNT(id_usuario)
+          FROM
+              consultas_clima
+          WHERE
+              id_usuario = u.id_usuario
+  ) AS total_consultas
+
+  ");
   //$select->innerjoin("categorias ON categorias.id = usuarios.categoria");
   $select->orderby("id_usuario DESC");
   $select->limit(10);
